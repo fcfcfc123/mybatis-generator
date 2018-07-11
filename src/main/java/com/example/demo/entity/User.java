@@ -1,17 +1,24 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable {
     private Integer id;
 
     private String name;
 
-    private String sex;
+    private Long sex;
 
-    private Float count;
+    private Integer age;
 
-    private Float no;
+    private String account;
+
+    private String password;
+
+    private String phone;
+
+    private Date time;
 
     private static final long serialVersionUID = 1L;
 
@@ -31,28 +38,52 @@ public class User implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getSex() {
+    public Long getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+    public void setSex(Long sex) {
+        this.sex = sex;
     }
 
-    public Float getCount() {
-        return count;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setCount(Float count) {
-        this.count = count;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public Float getNo() {
-        return no;
+    public String getAccount() {
+        return account;
     }
 
-    public void setNo(Float no) {
-        this.no = no;
+    public void setAccount(String account) {
+        this.account = account == null ? null : account.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     @Override
@@ -64,8 +95,11 @@ public class User implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", sex=").append(sex);
-        sb.append(", count=").append(count);
-        sb.append(", no=").append(no);
+        sb.append(", age=").append(age);
+        sb.append(", account=").append(account);
+        sb.append(", password=").append(password);
+        sb.append(", phone=").append(phone);
+        sb.append(", time=").append(time);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

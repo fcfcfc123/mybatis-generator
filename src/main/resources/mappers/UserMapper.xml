@@ -4,6 +4,51 @@
   <resultMap id="BaseResultMap" type="com.example.demo.entity.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="BIGINT" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (`name`, sex, age, 
+      account, `password`, phone, 
+      `time`)
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=BIGINT}, #{age,jdbcType=INTEGER}, 
+      #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.User">
+    update user
+    set `name` = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIGINT},
+      age = #{age,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, `name`, sex, age, account, `password`, phone, `time`
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `name`, sex, age, account, `password`, phone, `time`
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="count" jdbcType="REAL" property="count" />
     <result column="no" jdbcType="REAL" property="no" />
